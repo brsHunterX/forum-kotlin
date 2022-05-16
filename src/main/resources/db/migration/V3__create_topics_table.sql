@@ -1,4 +1,4 @@
-CREATE TABLE topic(
+CREATE TABLE topics(
     id BIGINT NOT NULL AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     message TINYTEXT NOT NULL,
@@ -7,6 +7,6 @@ CREATE TABLE topic(
     course_id BIGINT NOT NULL,
     author_id BIGINT NOT NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY(course_id) REFERENCES course(id),
-    FOREIGN KEY(author_id) REFERENCES user(id)
+    FOREIGN KEY(course_id) REFERENCES courses(id),
+    FOREIGN KEY(author_id) REFERENCES users(id)
 )

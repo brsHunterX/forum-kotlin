@@ -6,6 +6,6 @@ CREATE TABLE answer(
     topic_id BIGINT NOT NULL,
     author_id BIGINT NOT NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY(topic_id) REFERENCES topic(id),
-    FOREIGN KEY(author_id) REFERENCES user(id)
+    FOREIGN KEY(topic_id) REFERENCES topics(id),
+    FOREIGN KEY(author_id) REFERENCES users(id)
 )

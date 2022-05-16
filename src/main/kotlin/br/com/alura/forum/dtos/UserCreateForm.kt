@@ -5,4 +5,5 @@ import javax.validation.constraints.NotEmpty
 class UserCreateForm(
   @field:NotEmpty val name: String,
   @field:NotEmpty val email: String,
+  @field:NotEmpty val password: String,
 ) {}

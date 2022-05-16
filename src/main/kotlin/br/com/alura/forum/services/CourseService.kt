@@ -12,21 +12,21 @@ import org.springframework.stereotype.Service
 class CourseService(
   private val mapper: CourseFormMapper,
   private val repository: CourseRepository,
-): IService<Course> {
+) {
 
-  override fun list(): List<Course> {
+  fun list(): List<Course> {
     return repository.findAll();
   }
 
-  override fun find(id: Long): Course {
+  fun find(id: Long): Course {
     return repository.getById(id);
   }
 
-  override fun createOrUpdate(model: Course): Course {
+  fun createOrUpdate(model: Course): Course {
     return repository.save(model);
   }
 
-  override fun delete(id: Long) {
+  fun delete(id: Long) {
     return repository.deleteById(id);
   }
 

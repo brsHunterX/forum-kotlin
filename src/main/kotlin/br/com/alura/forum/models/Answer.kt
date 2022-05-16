@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
-@Table(name="answer")
+@Table(name="answers")
 data class Answer(
 
   @Id

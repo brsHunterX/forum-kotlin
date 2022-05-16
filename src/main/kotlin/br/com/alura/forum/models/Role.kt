@@ -1,10 +1,11 @@
 package br.com.alura.forum.models
 
+import org.springframework.security.core.GrantedAuthority
 import javax.persistence.*
 
 @Entity
-@Table(name="courses")
-data class Course (
+@Table(name="roles")
+data class Role(
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,7 +14,9 @@ data class Course (
 
   @Column(name = "name", nullable = false)
   var name: String,
+): GrantedAuthority {
 
-  @Column(name = "category", nullable = false)
-  var category: String,
-) {}
+  override fun getAuthority(): String {
+    return name;
+  }
+}

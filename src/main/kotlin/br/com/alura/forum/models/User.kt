@@ -1,10 +1,11 @@
 package br.com.alura.forum.models
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 data class User(
 
   @Id
@@ -17,4 +18,12 @@ data class User(
 
   @Column(name = "email", nullable = false)
   var email: String,
+
+  @Column(name = "password", nullable = false)
+  var password: String,
+
+  @JsonIgnore
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinColumn(name = "users_roles")
+  val roles: List<Role> = listOf(),
 ) {}

@@ -5,7 +5,7 @@ import br.com.alura.forum.enums.TopicStatus
 import javax.persistence.*
 
 @Entity
-@Table(name="topic")
+@Table(name="topics")
 data class Topic(
 
   @Id

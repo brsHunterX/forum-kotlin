@@ -6,26 +6,29 @@ import br.com.alura.forum.interfaces.IService
 import br.com.alura.forum.mappers.UserFormMapper
 import br.com.alura.forum.models.User
 import br.com.alura.forum.repositories.UserRepository
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
+import java.lang.RuntimeException
 
 @Service
 class UserService(
   private val mapper: UserFormMapper,
   private val repository: UserRepository
-): IService<User> {
-  override fun list(): List<User> {
+): UserDetailsService {
+  fun list(): List<User> {
     return repository.findAll();
   }
 
-  override fun find(id: Long): User {
+  fun find(id: Long): User {
     return repository.getById(id);
   }
 
-  override fun createOrUpdate(model: User): User {
+  fun createOrUpdate(model: User): User {
     return repository.save(model);
   }
 
-  override fun delete(id: Long) {
+  fun delete(id: Long) {
     return repository.deleteById(id);
   }
 
@@ -40,5 +43,11 @@ class UserService(
     user.email = form.email;
 
     return createOrUpdate(user);
+  }
+
+  override fun loadUserByUsername(username: String?): UserDetails {
+    val user: User = repository.findByEmail(username) ?: throw RuntimeException();
+
+    return UserDetailService(user);
   }
 }

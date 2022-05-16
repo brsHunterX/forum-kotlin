@@ -12,6 +12,7 @@ class UserFormMapper(): IMapper<UserCreateForm, User> {
     return User(
       name = t.name,
       email = t.email,
+      password = t.password
     );
   }
 
